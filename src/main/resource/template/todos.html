@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo List</title>
+</head>
+<body>
+
+<h1>Todo List</h1>
+
+<!-- Hiển thị danh sách todos -->
+<table>
+    <thead>
+        <tr>
+            <th>Task</th>
+            <th>Completed</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="todo : ${todos}">
+            <td th:text="${todo.task}">Task</td>
+            <td th:text="${todo.completed}">Completed</td>
+            <td>
+                <a th:href="@{/todos/delete/{id}(id=${todo.id})}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Form tạo todo mới -->
+<h2>Create New Todo</h2>
+<form th:action="@{/todos}" th:object="${todo}" method="post">
+    <label for="task">Task:</label>
+    <input type="text" id="task" th:field="*{task}" />
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

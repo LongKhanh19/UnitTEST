@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Thông tin dự án -->
+    <groupId>com.example</groupId>
+    <artifactId>todo-app</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <!-- Parent Spring Boot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
+        <relativePath/> <!-- Không cần thiết -->
+    </parent>
+
+    <!-- Các dependencies của dự án -->
+    <dependencies>
+        <!-- Spring Boot Starter Web để xây dựng ứng dụng web -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
+        </dependency>
+
+        <!-- Spring Boot Starter Data JPA để làm việc với cơ sở dữ liệu -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
+        </dependency>
+
+        <!-- H2 Database để lưu trữ dữ liệu trong bộ nhớ (dùng cho phát triển và kiểm thử) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.1.214</version> <!-- Thay phiên bản phù hợp -->
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- Spring Boot Starter Test để kiểm thử -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Build cấu hình cho Maven -->
+    <build>
+        <plugins>
+            <!-- Spring Boot Maven Plugin để chạy ứng dụng -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.7.0</version> <!-- Phiên bản Spring Boot -->
+            </plugin>
+
+            <!-- Sử dụng exec-maven-plugin để chạy ứng dụng Java nếu cần thiết -->
+            <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.1.0</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>exec</goal>
+            </goals>
+            <configuration>
+                <!-- Sửa lại mainClass thành lớp chính của bạn -->
+                <mainClass>com.example.todoapp.TodoAppApplication</mainClass>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+        </plugins>
+    </build>
+</project>
