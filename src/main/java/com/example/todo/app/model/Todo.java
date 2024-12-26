@@ -1,4 +1,4 @@
-package com.example.todoapp.model;
+package com.example.todo.app.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,11 +8,19 @@ public class Todo {
 
     @Id
     private Long id;
-    private String task;
-    private boolean completed;
+    private String name;
+    private boolean done;
 
-    // Getters and Setters
+    // Constructor
+    public Todo() {}
 
+    public Todo(Long id, String name, boolean done) {
+        this.id = id;
+        this.name = name;
+        this.done = done;
+    }
+
+    // Getter và Setter
     public Long getId() {
         return id;
     }
@@ -21,19 +29,19 @@ public class Todo {
         this.id = id;
     }
 
-    public String getTask() {
-        return task;
+    public String getName() {
+        return name;
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public boolean isCompleted() {
-        return completed;
+    public boolean isDone() {
+        return done;
     }
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
+    public void setDone(boolean done) {
+        this.done = done;
     }
 }

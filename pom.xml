@@ -4,81 +4,117 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Thông tin dự án -->
     <groupId>com.example</groupId>
     <artifactId>todo-app</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <!-- Parent Spring Boot -->
+    <name>todo-app</name>
+    <description>Todo application using Spring Boot</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
-        <relativePath/> <!-- Không cần thiết -->
+        <version>2.5.5</version> <!-- Use the version of Spring Boot you prefer -->
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <!-- Các dependencies của dự án -->
+    <properties>
+        <java.version>11</java.version> <!-- Change this to the version of Java you're using -->
+        <spring-boot.version>2.5.5</spring-boot.version>
+    </properties>
+
     <dependencies>
-        <!-- Spring Boot Starter Web để xây dựng ứng dụng web -->
+        <!-- Spring Boot Web and Data JPA dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
         </dependency>
 
-        <!-- Spring Boot Starter Data JPA để làm việc với cơ sở dữ liệu -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
         </dependency>
 
-        <!-- H2 Database để lưu trữ dữ liệu trong bộ nhớ (dùng cho phát triển và kiểm thử) -->
+        <!-- H2 Database for testing (use your preferred DB for production) -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.1.214</version> <!-- Thay phiên bản phù hợp -->
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Spring Boot Starter Test để kiểm thử -->
+        <!-- Thymeleaf for HTML rendering (optional) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
+        <!-- Spring Boot Test for Unit and Integration Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.7.0</version> <!-- Thay phiên bản phù hợp -->
             <scope>test</scope>
         </dependency>
+
+        <!-- JUnit 5 (JUnit Jupiter) -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.7.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito for mocking dependencies in tests -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>3.11.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito Extension for JUnit 5 -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>3.11.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Lombok for code simplicity (Optional, if you are using it for getters/setters) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
-    <!-- Build cấu hình cho Maven -->
     <build>
         <plugins>
-            <!-- Spring Boot Maven Plugin để chạy ứng dụng -->
+            <!-- Spring Boot Maven Plugin for building the application -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.0</version> <!-- Phiên bản Spring Boot -->
             </plugin>
 
-            <!-- Sử dụng exec-maven-plugin để chạy ứng dụng Java nếu cần thiết -->
+            <!-- Maven Surefire Plugin for running tests -->
             <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>3.1.0</version>
-    <executions>
-        <execution>
-            <goals>
-                <goal>exec</goal>
-            </goals>
-            <configuration>
-                <!-- Sửa lại mainClass thành lớp chính của bạn -->
-                <mainClass>com.example.todoapp.TodoAppApplication</mainClass>
-            </configuration>
-        </execution>
-    </executions>
-</plugin>
-
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
 </project>

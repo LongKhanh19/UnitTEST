@@ -1,7 +1,7 @@
-package com.example.todoapp.controller;
+package com.example.todo.app.controller;
 
-import com.example.todoapp.model.Todo;
-import com.example.todoapp.service.TodoService;
+import com.example.todo.app.model.Todo;  // Corrected package for Todo
+import com.example.todo.app.service.TodoService;  // Corrected package for TodoService
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

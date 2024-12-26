@@ -1,6 +1,6 @@
-com\example\todoapp\repository\TodoRepository.class
-com\example\todoapp\service\TodoService.class
+com\example\todo\app\controller\TodoController.class
 com\example\todo\app\TodoApp.class
-com\example\todoapp\model\Todo.class
 com\example\todoapp\TodoAppApplication.class
-com\example\todoapp\controller\TodoController.class
+com\example\todo\app\service\TodoService.class
+com\example\todo\app\model\Todo.class
+com\example\todo\app\repository\TodoRepository.class
